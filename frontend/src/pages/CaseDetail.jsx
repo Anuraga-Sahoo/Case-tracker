@@ -67,7 +67,7 @@ const CaseDetail = () => {
   // Base URL for document downloads
   const backendBaseUrl = import.meta.env.VITE_API_URL 
     ? import.meta.env.VITE_API_URL.replace('/api', '') 
-    : 'http://localhost:5000';
+    : (import.meta.env.PROD ? 'https://case-tracker-evo3.onrender.com' : 'http://localhost:5000');
 
   const fetchCaseDetails = async () => {
     try {

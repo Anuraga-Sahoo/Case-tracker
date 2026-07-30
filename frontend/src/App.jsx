@@ -12,8 +12,8 @@ const { Header, Content, Footer } = Layout;
 const { Text, Title } = Typography;
 
 // Configure Axios Default URL
-// In development, it points to local port 5000
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// In development, it points to local port 5000, in production it falls back to Render backend API
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://case-tracker-evo3.onrender.com/api' : 'http://localhost:5000/api');
 
 // Request interceptor to automatically attach authorization header
 axios.interceptors.request.use(
