@@ -12,10 +12,25 @@ connectDB();
 
 const app = express();
 
-// Middlewares
+const allowedOrigins = [
+  'https://your-app-name.vercel.app', 
+  'http://localhost:5173',            
+  'http://localhost:3000'             
+];
+
+// 2. CORS configuration
 app.use(cors({
-  origin: '*', // Allow all origins for testing/ease of run
-  credentials: true,
+  origin: function (origin, callback) {
+    
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy error: Origin not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true 
 }));
 
 // Allow public websites (like Vercel) to access localhost/loopback address space
