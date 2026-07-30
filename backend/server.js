@@ -13,7 +13,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  'https://your-app-name.vercel.app', 
+  'https://case-tracker-evo3.onrender.com', 
   'http://localhost:5173',            
   'http://localhost:3000'             
 ];
