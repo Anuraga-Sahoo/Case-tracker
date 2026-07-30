@@ -25,7 +25,7 @@ const Login = () => {
     setLoading(true);
     setErrorMsg('');
     try {
-      const response = await axios.post('https://case-tracker-evo3.onrender.com/auth/login', values);
+      const response = await axios.post('/auth/login', values);
       const { token, ...userData } = response.data;
       login(userData, token);
       navigate('/', { replace: true });
