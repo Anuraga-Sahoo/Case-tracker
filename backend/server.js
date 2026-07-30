@@ -17,6 +17,13 @@ app.use(cors({
   origin: '*', // Allow all origins for testing/ease of run
   credentials: true,
 }));
+
+// Allow public websites (like Vercel) to access localhost/loopback address space
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Private-Network', 'true');
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
