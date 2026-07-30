@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy:{
-      '/api':{
+      '/':{
         target:"https://case-tracker-evo3.onrender.com",
         changeOrigin: true,
       }
